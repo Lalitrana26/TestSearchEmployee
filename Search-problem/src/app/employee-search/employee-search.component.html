@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+                   <h2>Search Employee</h2>
+        </div>
+    </div>
+<div class="row">
+    <div class="alert alert-danger" [style.display]="showError?'block':'none'" role="alert">
+               {{errorText}}
+    </div>
+</div>
+<div class="row">
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Employee Name</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" formControlName="name" aria-describedby="emailHelp" placeholder="Enter Name">
+
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Employment Start Date</label>
+                  <input type="text" class="form-control" formControlName="startDate" id="exampleInputPassword1" placeholder="DD/MM/YYYY">
+                </div>
+                <div class="form-group">
+                        <label for="exampleInputPassword1">Employment End Date</label>
+                        <input type="text" class="form-control" formControlName="endDate"  id="exampleInputPassword1" placeholder="DD/MM/YYYY">
+                 </div>
+
+                <button type="submit" class="btn btn-primary">Seach</button>
+              </form>
+</div>
+<div class="row">
+  <hr>
+</div>
+    <div class="row">
+ <table class="table table-striped" *ngIf="employeeDetailsList">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Job Title</th>
+        <th scope="col">Age</th>
+        <th scope="col">Employment Start Date</th>
+        <th scope="col">Employment End Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor ="let emp of employeeDetailsList">
+        <th scope="row">{{emp.Sno}}</th>
+        <td>{{emp.Name}}</td>
+        <td>{{emp.JobTitle}}</td>
+        <td>{{emp.Age}}</td>
+        <td>{{emp.EmploymentStartDate | date: 'dd/MM/yyyy'}}</td>
+        <td>{{emp.EmploymentEndDate | date: 'dd/MM/yyyy'}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
